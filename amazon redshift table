@@ -1,0 +1,15 @@
+CREATE TABLE bsas (
+    main char(20),
+    description char(40),
+    temp decimal(10,2),
+    feels_like decimal(10,2),
+    temp_min decimal(10,2),
+    temp_max decimal(10,2),
+    pressure decimal(10,2),
+    humidity decimal(10,2),
+    visibility integer,
+    speed decimal(10,2),
+    dt timestamp primary key
+);
+
+select * from bsas
