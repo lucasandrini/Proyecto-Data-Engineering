@@ -9,6 +9,7 @@ import sqlalchemy
 from sqlalchemy import create_engine, text
 from airflow.hooks.base_hook import BaseHook
 from sqlalchemy.engine.url import URL
+import configparser
 
 # Parámetros del DAG
 default_args = {
@@ -23,7 +24,7 @@ dag = DAG(
     'etl_weather_data',
     default_args=default_args,
     description='ETL job for weather data',
-    schedule_interval='@daily',
+    schedule_interval='0 0,6,12,18 * * *',
 )
 
 # Funciones ETL
@@ -71,11 +72,13 @@ def transform(**kwargs):
 def load(**kwargs):
     ti = kwargs['ti']
     df_final = ti.xcom_pull(task_ids='transform')
-    user = 'lucas_andrini_coderhouse'
-    password = 'CIpG6k50To'
-    host = 'data-engineer-cluster.cyhh5bfevlmn.us-east-1.redshift.amazonaws.com'
-    port = '5439'
-    database = 'data-engineer-database'
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    user = config.get('redshift', 'user')
+    password = config.get('redshift', 'password')
+    host = config.get('redshift', 'host')
+    port = config.get('redshift', 'port')
+    database = config.get('redshift', 'database')
     url = URL.create(
         drivername='redshift+redshift_connector',
         host=host,
