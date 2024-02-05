@@ -1,4 +1,4 @@
-# ETL Datos Meteorológicos - DAG de Airflow
+# ETL Datos Meteorológicos
 
 ## Descripción General
 Este DAG de Airflow está diseñado para realizar un proceso ETL de datos meteorológicos. Los datos se extraen de la API de OpenWeatherMap, se transforman, y se cargan en una base de datos AWS Redshift. Se envían alertas por correo electrónico en caso de temperaturas que sobrepasen los limites establecidos.
@@ -30,35 +30,36 @@ destinatario = DIRECCIÓN_DE_CORREO_ELECTRÓNICO_DEL_DESTINATARIO
 
 [smtp_config]
 smtp_server = TU_SERVIDOR_SMTP
-smtp_port = TU_PUERTO_SMTP```
+smtp_port = TU_PUERTO_SMTP
+```
 
 ## Estructura del DAG
 Este DAG se llama etl_weather_data y consta de las siguientes tareas:
 
 ### Tarea de Extracción (extract):
-Obtiene datos meteorológicos de la API de OpenWeatherMap para las ciudades especificadas.
-Guarda los datos en un archivo CSV temporal.
+* Obtiene datos meteorológicos de la API de OpenWeatherMap para las ciudades especificadas.
+* Guarda los datos en un archivo CSV temporal.
 
 ### Tarea de Transformación (transform):
-Lee el archivo CSV extraído.
-Transforma los datos, descartando los irrelevantes y ajustando los tipos.
-Guarda los datos transformados en otro archivo CSV temporal.
+* Lee el archivo CSV extraído.
+* Transforma los datos, descartando los irrelevantes y ajustando los tipos.
+* Guarda los datos transformados en otro archivo CSV temporal.
 
 ### Tarea de Carga (load):
-Lee el archivo CSV transformado.
-Carga los datos en una tabla de AWS Redshift llamada weather_cities.
+* Lee el archivo CSV transformado.
+* Carga los datos en una tabla de AWS Redshift llamada weather_cities.
 
 ### Tarea de Envío de Correo Electrónico (send_email_task):
-Verifica si temperatura sobrepase el nivel minimo o maximo establecido en el CSV de datos transformados.
-Envía alertas por correo electrónico si se encuentran anomalías.
+* Verifica si temperatura sobrepase el nivel minimo o maximo establecido en el CSV de datos transformados.
+* Envía alertas por correo electrónico si se encuentran anomalías.
 
 ### Tarea de Limpieza (cleanup_temp_files):
-Elimina archivos CSV temporales creados durante el proceso ETL.
+* Elimina archivos CSV temporales creados durante el proceso ETL.
 
 ## Parámetros del DAG
-Fecha de Inicio: Fecha y hora actuales
-Reintentos: 1
-Retardo en Reintentos: 1 minuto
+* Fecha de Inicio: Fecha y hora actuales
+* Reintentos: 1
+* Retardo en Reintentos: 1 minuto
 
 ## Programación
 El DAG está programado para ejecutarse cada 6 horas a las 0, 6, 12 y 18 UTC.
