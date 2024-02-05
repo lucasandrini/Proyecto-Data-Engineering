@@ -53,11 +53,11 @@ Este DAG se llama etl_weather_data y consta de las siguientes tareas:
 * Verifica si temperatura sobrepase el nivel minimo o maximo establecido en el CSV de datos transformados.
 * Envía alertas por correo electrónico si se encuentran anomalías.
 * El mail enviado tiene la siguiente estructura:
-* 	Fecha_de_envío
-* 	| Country | Name    | Temp    | Limite  |
-	| ------- | ------- | ------- | ------- |
-	| Val 1,1 | Val 1,2 | Val 1,3 | Val 1,4 |
-	| Val 2,1 | Val 2,2 | Val 2,3 | Val 2,4 | 
+  Fecha_de_envío
+  | Country | Name    | Temp    | Limite  |
+  | ------- | ------- | ------- | ------- |
+  | Val 1,1 | Val 1,2 | Val 1,3 | Val 1,4 |
+  | Val 2,1 | Val 2,2 | Val 2,3 | Val 2,4 | 
 
 ### Tarea de Limpieza (cleanup_temp_files):
 * Elimina archivos CSV temporales creados durante el proceso ETL.
