@@ -1,4 +1,6 @@
-CREATE TABLE bsas (
+CREATE TABLE weather_cities (
+	lon decimal(10,2),
+	lat decimal(10,2),
     main char(20),
     description char(40),
     temp decimal(10,2),
@@ -9,7 +11,10 @@ CREATE TABLE bsas (
     humidity decimal(10,2),
     visibility integer,
     speed decimal(10,2),
-    dt timestamp primary key
+    dt timestamp,
+    country char(4),
+    name char(40),
+    PRIMARY KEY (name, dt)
 );
 
-select * from bsas
+select * from weather_cities
