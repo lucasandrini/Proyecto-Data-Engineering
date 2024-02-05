@@ -70,4 +70,4 @@ Los registros están configurados para mostrar marcas de tiempo, niveles y mensa
 ## Notas
 * Se debe asegurar que Airflow tenga las dependencias necesarias instaladas, es decir, las bibliotecas que se encuentran en `requeriments.txt`.
 * La base de datos `weather_cities` ya debe existir antes de la ejecución del DAG. Dentro del repositorio se encuentra la query para su creación.
-* Para el envío del mail de alerta, en caso de usar gmail, se debe configurar una contraseña de aplicación. Para más información consultar el siguiente hilo: [Google]([https://www.google.com](https://stackoverflow.com/questions/59188483/error-invalid-login-535-5-7-8-username-and-password-not-accepted)https://stackoverflow.com/questions/59188483/error-invalid-login-535-5-7-8-username-and-password-not-accepted)
+* Para el envío del mail de alerta, en caso de usar gmail, se debe configurar una contraseña de aplicación. Para más información consultar el siguiente hilo: [Stack Overflow](https://stackoverflow.com/questions/59188483/error-invalid-login-535-5-7-8-username-and-password-not-accepted)
