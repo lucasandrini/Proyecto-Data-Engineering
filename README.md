@@ -10,7 +10,7 @@ Editar el archivo de configuración `config.ini` ubicado en `/opt/airflow/dags/`
 ```ini
 [openweathermap]
 api_key = TU_CLAVE_DE_API_DE_OPENWEATHERMAP
-cities = LATITUD1;LONGITUD1, LATITUD2;LONGITUD2, ...  # Especifica las coordenadas de las ciudades separadas por comas
+cities = LATITUD1;LONGITUD1, LATITUD2;LONGITUD2, ...
 
 [redshift]
 user = TU_USUARIO_DE_REDSHIFT
@@ -67,5 +67,7 @@ El DAG está programado para ejecutarse cada 6 horas a las 0, 6, 12 y 18 UTC.
 ## Registro
 Los registros están configurados para mostrar marcas de tiempo, niveles y mensajes para facilitar el monitoreo.
 
-## Nota
-Se debe asegurar de que Airflow tenga las dependencias necesarias instaladas, es decir, las bibliotecas que se encuentran en `requeriments.txt`.
+## Notas
+* Se debe asegurar que Airflow tenga las dependencias necesarias instaladas, es decir, las bibliotecas que se encuentran en `requeriments.txt`.
+* La base de datos `weather_cities` ya debe existir antes de la ejecución del DAG. Dentro del repositorio se encuentra la query para su creación.
+* Para el envío del mail de alerta, en caso de usar gmail, se debe configurar una contraseña de aplicación. Para más información consultar el siguiente hilo: [Google]([https://www.google.com](https://stackoverflow.com/questions/59188483/error-invalid-login-535-5-7-8-username-and-password-not-accepted)https://stackoverflow.com/questions/59188483/error-invalid-login-535-5-7-8-username-and-password-not-accepted)
