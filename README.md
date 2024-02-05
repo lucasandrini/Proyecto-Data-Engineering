@@ -69,5 +69,26 @@ Los registros están configurados para mostrar marcas de tiempo, niveles y mensa
 
 ## Notas
 * Se debe asegurar que Airflow tenga las dependencias necesarias instaladas, es decir, las bibliotecas que se encuentran en `requeriments.txt`.
-* La base de datos `weather_cities` ya debe existir antes de la ejecución del DAG. Dentro del repositorio se encuentra la query para su creación.
+* La base de datos `weather_cities` ya debe existir antes de la ejecución del DAG. Dentro del repositorio se encuentra la query para su creación:
+```
+CREATE TABLE weather_cities (
+	lon decimal(10,2),
+	lat decimal(10,2),
+    main char(20),
+    description char(40),
+    temp decimal(10,2),
+    feels_like decimal(10,2),
+    temp_min decimal(10,2),
+    temp_max decimal(10,2),
+    pressure decimal(10,2),
+    humidity decimal(10,2),
+    visibility integer,
+    speed decimal(10,2),
+    dt timestamp,
+    country char(4),
+    name char(40),
+    PRIMARY KEY (name, dt)
+);
+```
 * Para el envío del mail de alerta, en caso de usar gmail, se debe configurar una contraseña de aplicación. Para más información consultar el siguiente hilo: [Stack Overflow](https://stackoverflow.com/questions/59188483/error-invalid-login-535-5-7-8-username-and-password-not-accepted)
+* El archivo `cities_list.xlsx` contiene ciudades con la información de longitud y latitud, las cuales se pueden agregar en `config.ini` para obtener la informacion.
