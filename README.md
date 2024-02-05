@@ -30,7 +30,7 @@ destinatario = DIRECCIÓN_DE_CORREO_ELECTRÓNICO_DEL_DESTINATARIO
 
 [smtp_config]
 smtp_server = TU_SERVIDOR_SMTP
-smtp_port = TU_PUERTO_SMTP
+smtp_port = TU_PUERTO_SMTP```
 
 ## Estructura del DAG
 Este DAG se llama etl_weather_data y consta de las siguientes tareas:
