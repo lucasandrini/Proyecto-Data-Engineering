@@ -65,7 +65,7 @@ Este DAG se llama etl_weather_data y consta de las siguientes tareas:
 El DAG está programado para ejecutarse cada 6 horas a las 0, 6, 12 y 18 UTC.
 
 ## Registro
-Los registros están configurados para mostrar marcas de tiempo, niveles y mensajes para facilitar el monitoreo.
+Los logs están configurados para mostrar marcas de tiempo, niveles y mensajes para facilitar el monitoreo en Apache Airflow.
 
 ## Notas
 * Se debe asegurar que Airflow tenga las dependencias necesarias instaladas, es decir, las bibliotecas que se encuentran en `requeriments.txt`.
@@ -91,4 +91,4 @@ CREATE TABLE weather_cities (
 );
 ```
 * Para el envío del mail de alerta, en caso de usar gmail, se debe configurar una contraseña de aplicación. Para más información consultar el siguiente hilo: [Stack Overflow](https://stackoverflow.com/questions/59188483/error-invalid-login-535-5-7-8-username-and-password-not-accepted)
-* El archivo `cities_list.xlsx` contiene ciudades con la información de longitud y latitud, las cuales se pueden agregar en `config.ini` para obtener la informacion.
+* El archivo `cities_list.xlsx` contiene ciudades con la información de longitud y latitud, las cuales se pueden agregar en `config.ini` para obtener la informacion del clima.
