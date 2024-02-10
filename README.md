@@ -4,33 +4,37 @@
 Este DAG de Airflow está diseñado para realizar un proceso ETL de datos meteorológicos. Los datos se extraen de la API de OpenWeatherMap, se transforman, y se cargan en una base de datos AWS Redshift. Se envían alertas por correo electrónico en caso de temperaturas que sobrepasen los limites establecidos.
 
 ## Configuración
-Editar el archivo de configuración `config.ini` ubicado en `/opt/airflow/dags/` con los parámetros necesarios. A continuación se detallan las secciones y claves requeridas:
+Editar el archivo de configuración `config.ini` ubicado en `/opt/airflow/` y `.env` con los parámetros necesarios. A continuación se detallan las secciones y claves requeridas:
 
-### Configuración de la API de OpenWeatherMap
-```ini
+### Configuración config.ini
+```
 [openweathermap]
-api_key = TU_CLAVE_DE_API_DE_OPENWEATHERMAP
-cities = LATITUD1;LONGITUD1, LATITUD2;LONGITUD2, ...
-
-[redshift]
-user = TU_USUARIO_DE_REDSHIFT
-password = TU_CONTRASEÑA_DE_REDSHIFT
-host = TU_HOST_DE_REDSHIFT
-port = TU_PUERTO_DE_REDSHIFT
-database = TU_BASE_DE_DATOS_DE_REDSHIFT
+cities = latitud1;longitud1, latitud2;longitud2, ...
 
 [temperature_thresholds]
-min_temperature = UMBRAL_DE_TEMPERATURA_MÍNIMO
-max_temperature = UMBRAL_DE_TEMPERATURA_MÁXIMO
-
-[mail_data]
-remitente = TU_DIRECCIÓN_DE_CORREO_ELECTRÓNICO
-password = TU_CONTRASEÑA_DE_CORREO_ELECTRÓNICO
-destinatario = DIRECCIÓN_DE_CORREO_ELECTRÓNICO_DEL_DESTINATARIO
+min_temperature = valor
+max_temperature = valor
 
 [smtp_config]
-smtp_server = TU_SERVIDOR_SMTP
-smtp_port = TU_PUERTO_SMTP
+smtp_server = valor
+smtp_port = valor
+```
+
+### Configuración .env
+```
+AIRFLOW_UID=50000
+
+OPENWEATHERMAP_API_KEY=valor
+
+MAIL_REMITENTE=valor
+MAIL_PASSWORD=valor
+MAIL_DESTINATARIO=valor
+
+REDSHIFT_USER=valor
+REDSHIFT_PASSWORD=valor
+REDSHIFT_HOST=valor
+REDSHIFT_PORT=valor
+REDSHIFT_DATABASE=valor
 ```
 
 ## Estructura del DAG
