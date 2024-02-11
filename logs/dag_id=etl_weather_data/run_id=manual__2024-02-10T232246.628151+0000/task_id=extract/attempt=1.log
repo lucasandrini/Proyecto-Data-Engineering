@@ -1,0 +1,74 @@
+[2024-02-10T23:22:51.710+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_weather_data.extract manual__2024-02-10T23:22:46.628151+00:00 [queued]>
+[2024-02-10T23:22:51.725+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_weather_data.extract manual__2024-02-10T23:22:46.628151+00:00 [queued]>
+[2024-02-10T23:22:51.725+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2024-02-10T23:22:51.914+0000] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): extract> on 2024-02-10 23:22:46.628151+00:00
+[2024-02-10T23:22:51.921+0000] {standard_task_runner.py:60} INFO - Started process 72 to run task
+[2024-02-10T23:22:51.927+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'etl_weather_data', 'extract', 'manual__2024-02-10T23:22:46.628151+00:00', '--job-id', '24', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmpmlo44eem']
+[2024-02-10T23:22:51.931+0000] {standard_task_runner.py:88} INFO - Job 24: Subtask extract
+[2024-02-10T23:22:52.009+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_weather_data.extract manual__2024-02-10T23:22:46.628151+00:00 [running]> on host f526341c90ef
+[2024-02-10T23:22:52.111+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Lucas Andrini' AIRFLOW_CTX_DAG_ID='etl_weather_data' AIRFLOW_CTX_TASK_ID='extract' AIRFLOW_CTX_EXECUTION_DATE='2024-02-10T23:22:46.628151+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-02-10T23:22:46.628151+00:00'
+[2024-02-10T23:22:53.189+0000] {etl_dag.py:79} INFO - Extracción de datos para la ciudad (-34.61, -58.38) OK.
+[2024-02-10T23:22:54.271+0000] {etl_dag.py:79} INFO - Extracción de datos para la ciudad (-56.18, -34.9) OK.
+[2024-02-10T23:22:55.324+0000] {etl_dag.py:81} INFO - Error en la solicitud a la API para la ciudad (135.18, 34.69).
+[2024-02-10T23:22:56.452+0000] {etl_dag.py:79} INFO - Extracción de datos para la ciudad (-0.12, 51.5) OK.
+[2024-02-10T23:22:57.474+0000] {etl_dag.py:81} INFO - Error en la solicitud a la API para la ciudad (-118.24, 34.05).
+[2024-02-10T23:22:58.540+0000] {etl_dag.py:79} INFO - Extracción de datos para la ciudad (-60.02, -3.1) OK.
+[2024-02-10T23:22:59.101+0000] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 715, in urlopen
+    httplib_response = self._make_request(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 404, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 1058, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connection.py", line 419, in connect
+    self.sock = ssl_wrap_socket(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/ssl_.py", line 449, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/ssl_.py", line 493, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+  File "/usr/local/lib/python3.8/ssl.py", line 500, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/local/lib/python3.8/ssl.py", line 1073, in _create
+    self.do_handshake()
+  File "/usr/local/lib/python3.8/ssl.py", line 1342, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLZeroReturnError: TLS/SSL connection has been closed (EOF) (_ssl.c:1131)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+    retries = retries.increment(
+  File "/home/airflow/.local/lib/python3.8/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.openweathermap.org', port=443): Max retries exceeded with url: /data/2.5/weather?lat=-80.19&lon=25.77&appid=654c7b47cda32dc0a894e1a875c3b9a2&units=metric (Caused by SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:1131)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/etl_dag.py", line 74, in extract
+    response = requests.get(url)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/requests/adapters.py", line 517, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: HTTPSConnectionPool(host='api.openweathermap.org', port=443): Max retries exceeded with url: /data/2.5/weather?lat=-80.19&lon=25.77&appid=654c7b47cda32dc0a894e1a875c3b9a2&units=metric (Caused by SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:1131)')))
+[2024-02-10T23:22:59.127+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=etl_weather_data, task_id=extract, execution_date=20240210T232246, start_date=20240210T232251, end_date=20240210T232259
+[2024-02-10T23:22:59.140+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 24 for task extract (HTTPSConnectionPool(host='api.openweathermap.org', port=443): Max retries exceeded with url: /data/2.5/weather?lat=-80.19&lon=25.77&appid=654c7b47cda32dc0a894e1a875c3b9a2&units=metric (Caused by SSLError(SSLZeroReturnError(6, 'TLS/SSL connection has been closed (EOF) (_ssl.c:1131)'))); 72)
+[2024-02-10T23:22:59.158+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-02-10T23:22:59.182+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

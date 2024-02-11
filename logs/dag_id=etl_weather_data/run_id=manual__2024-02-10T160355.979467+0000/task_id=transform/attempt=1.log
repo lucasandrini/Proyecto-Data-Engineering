@@ -1,0 +1,18 @@
+[2024-02-10T16:04:04.659+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_weather_data.transform manual__2024-02-10T16:03:55.979467+00:00 [queued]>
+[2024-02-10T16:04:04.670+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_weather_data.transform manual__2024-02-10T16:03:55.979467+00:00 [queued]>
+[2024-02-10T16:04:04.671+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2024-02-10T16:04:04.688+0000] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): transform> on 2024-02-10 16:03:55.979467+00:00
+[2024-02-10T16:04:04.692+0000] {standard_task_runner.py:60} INFO - Started process 114 to run task
+[2024-02-10T16:04:04.696+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'etl_weather_data', 'transform', 'manual__2024-02-10T16:03:55.979467+00:00', '--job-id', '39', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmppw0h3zet']
+[2024-02-10T16:04:04.700+0000] {standard_task_runner.py:88} INFO - Job 39: Subtask transform
+[2024-02-10T16:04:04.754+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_weather_data.transform manual__2024-02-10T16:03:55.979467+00:00 [running]> on host 0d632e0d618d
+[2024-02-10T16:04:05.019+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Lucas Andrini' AIRFLOW_CTX_DAG_ID='etl_weather_data' AIRFLOW_CTX_TASK_ID='transform' AIRFLOW_CTX_EXECUTION_DATE='2024-02-10T16:03:55.979467+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-02-10T16:03:55.979467+00:00'
+[2024-02-10T16:04:05.040+0000] {etl_dag.py:150} INFO - Contenido de df_transformed:
+       lon      lat    main      description   temp  feels_like  temp_min  temp_max  pressure  humidity  visibility  speed                        dt country                                          name
+0 -58.3811 -34.6142  Clouds    broken clouds  27.63       31.06     26.94     28.82      1009        79       10000   3.60 2024-02-10 15:55:27+00:00      AR                                  Buenos Aires
+1 -34.9000 -56.1800  Clouds  overcast clouds   2.57       -4.43      2.57      2.57       987        78       10000  17.05 2024-02-10 15:58:00+00:00      GS  South Georgia and the South Sandwich Islands
+[2024-02-10T16:04:05.043+0000] {etl_dag.py:154} INFO - Transformación de datos ok.
+[2024-02-10T16:04:05.044+0000] {python.py:201} INFO - Done. Returned value was: None
+[2024-02-10T16:04:05.055+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=etl_weather_data, task_id=transform, execution_date=20240210T160355, start_date=20240210T160404, end_date=20240210T160405
+[2024-02-10T16:04:05.110+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-02-10T16:04:05.317+0000] {taskinstance.py:3281} INFO - 2 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,24 @@
+[2024-02-10T23:11:16.961+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_weather_data.transform manual__2024-02-10T23:04:38.076330+00:00 [queued]>
+[2024-02-10T23:11:17.053+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_weather_data.transform manual__2024-02-10T23:04:38.076330+00:00 [queued]>
+[2024-02-10T23:11:17.058+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2024-02-10T23:11:17.157+0000] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): transform> on 2024-02-10 23:04:38.076330+00:00
+[2024-02-10T23:11:17.169+0000] {standard_task_runner.py:60} INFO - Started process 81 to run task
+[2024-02-10T23:11:17.207+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'etl_weather_data', 'transform', 'manual__2024-02-10T23:04:38.076330+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmphkxz2m1j']
+[2024-02-10T23:11:17.217+0000] {standard_task_runner.py:88} INFO - Job 8: Subtask transform
+[2024-02-10T23:11:17.535+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_weather_data.transform manual__2024-02-10T23:04:38.076330+00:00 [running]> on host dffe7b1315cb
+[2024-02-10T23:11:18.545+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Lucas Andrini' AIRFLOW_CTX_DAG_ID='etl_weather_data' AIRFLOW_CTX_TASK_ID='transform' AIRFLOW_CTX_EXECUTION_DATE='2024-02-10T23:04:38.076330+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-02-10T23:04:38.076330+00:00'
+[2024-02-10T23:11:18.603+0000] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/etl_dag.py", line 131, in transform
+    fila_transformed['country'] = fila['sys']['country']
+KeyError: 'country'
+[2024-02-10T23:11:18.692+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=etl_weather_data, task_id=transform, execution_date=20240210T230438, start_date=20240210T231116, end_date=20240210T231118
+[2024-02-10T23:11:18.752+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 8 for task transform ('country'; 81)
+[2024-02-10T23:11:18.810+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-02-10T23:11:18.953+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

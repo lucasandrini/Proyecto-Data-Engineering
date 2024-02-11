@@ -1,0 +1,43 @@
+[2024-02-10T22:28:32.649+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_weather_data.send_email_task manual__2024-02-10T22:28:22.733817+00:00 [queued]>
+[2024-02-10T22:28:32.671+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_weather_data.send_email_task manual__2024-02-10T22:28:22.733817+00:00 [queued]>
+[2024-02-10T22:28:32.672+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2024-02-10T22:28:32.706+0000] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): send_email_task> on 2024-02-10 22:28:22.733817+00:00
+[2024-02-10T22:28:32.712+0000] {standard_task_runner.py:60} INFO - Started process 93 to run task
+[2024-02-10T22:28:32.718+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'etl_weather_data', 'send_email_task', 'manual__2024-02-10T22:28:22.733817+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmphioc5_jt']
+[2024-02-10T22:28:32.724+0000] {standard_task_runner.py:88} INFO - Job 14: Subtask send_email_task
+[2024-02-10T22:28:32.822+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_weather_data.send_email_task manual__2024-02-10T22:28:22.733817+00:00 [running]> on host 26fcbe5ecfed
+[2024-02-10T22:28:33.375+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Lucas Andrini' AIRFLOW_CTX_DAG_ID='etl_weather_data' AIRFLOW_CTX_TASK_ID='send_email_task' AIRFLOW_CTX_EXECUTION_DATE='2024-02-10T22:28:22.733817+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-02-10T22:28:22.733817+00:00'
+[2024-02-10T22:28:33.388+0000] {etl_dag.py:187} INFO - Tipo de datos temp: float64
+[2024-02-10T22:28:33.389+0000] {etl_dag.py:191} INFO - min temp: 5.0
+[2024-02-10T22:28:33.390+0000] {etl_dag.py:194} INFO - max temp: 30.0
+[2024-02-10T22:28:33.401+0000] {etl_dag.py:208} INFO - Filas a notificar:
+[2024-02-10T22:28:33.402+0000] {etl_dag.py:209} INFO -   country                                          name   temp  limite
+0      AR                                  Buenos Aires  30.25    30.0
+1      GS  South Georgia and the South Sandwich Islands   2.59     5.0
+[2024-02-10T22:28:33.434+0000] {etl_dag.py:235} INFO - mail: lucasandrini01@gmail.com
+[2024-02-10T22:28:33.437+0000] {etl_dag.py:236} INFO - msg: Content-Type: multipart/mixed; boundary="===============7126371573982394875=="
+MIME-Version: 1.0
+Subject: Alerta de temperatura
+
+--===============7126371573982394875==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: base64
+
+RmVjaGEgZGUgZW52w61vOiAyMDI0LTAyLTEwIDIyOjI4OjMzCgo8dGFibGUgYm9yZGVyPSIxIiBj
+bGFzcz0iZGF0YWZyYW1lIj4KICA8dGhlYWQ+CiAgICA8dHIgc3R5bGU9InRleHQtYWxpZ246IHJp
+Z2h0OyI+CiAgICAgIDx0aD5jb3VudHJ5PC90aD4KICAgICAgPHRoPm5hbWU8L3RoPgogICAgICA8
+dGg+dGVtcDwvdGg+CiAgICAgIDx0aD5saW1pdGU8L3RoPgogICAgPC90cj4KICA8L3RoZWFkPgog
+IDx0Ym9keT4KICAgIDx0cj4KICAgICAgPHRkPkFSPC90ZD4KICAgICAgPHRkPkJ1ZW5vcyBBaXJl
+czwvdGQ+CiAgICAgIDx0ZD4zMC4yNTwvdGQ+CiAgICAgIDx0ZD4zMC4wPC90ZD4KICAgIDwvdHI+
+CiAgICA8dHI+CiAgICAgIDx0ZD5HUzwvdGQ+CiAgICAgIDx0ZD5Tb3V0aCBHZW9yZ2lhIGFuZCB0
+aGUgU291dGggU2FuZHdpY2ggSXNsYW5kczwvdGQ+CiAgICAgIDx0ZD4yLjU5PC90ZD4KICAgICAg
+PHRkPjUuMDwvdGQ+CiAgICA8L3RyPgogIDwvdGJvZHk+CjwvdGFibGU+
+
+--===============7126371573982394875==--
+
+[2024-02-10T22:28:36.035+0000] {etl_dag.py:245} INFO - Correo electrónico enviado con éxito.
+[2024-02-10T22:28:36.036+0000] {python.py:201} INFO - Done. Returned value was: None
+[2024-02-10T22:28:36.051+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=etl_weather_data, task_id=send_email_task, execution_date=20240210T222822, start_date=20240210T222832, end_date=20240210T222836
+[2024-02-10T22:28:36.114+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-02-10T22:28:36.166+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

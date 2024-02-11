@@ -1,0 +1,17 @@
+[2024-02-10T22:28:46.318+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_weather_data.cleanup_temp_files manual__2024-02-10T22:28:22.733817+00:00 [queued]>
+[2024-02-10T22:28:46.326+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_weather_data.cleanup_temp_files manual__2024-02-10T22:28:22.733817+00:00 [queued]>
+[2024-02-10T22:28:46.327+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2024-02-10T22:28:46.341+0000] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): cleanup_temp_files> on 2024-02-10 22:28:22.733817+00:00
+[2024-02-10T22:28:46.346+0000] {standard_task_runner.py:60} INFO - Started process 97 to run task
+[2024-02-10T22:28:46.349+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'etl_weather_data', 'cleanup_temp_files', 'manual__2024-02-10T22:28:22.733817+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmpnl81phgk']
+[2024-02-10T22:28:46.352+0000] {standard_task_runner.py:88} INFO - Job 16: Subtask cleanup_temp_files
+[2024-02-10T22:28:46.396+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_weather_data.cleanup_temp_files manual__2024-02-10T22:28:22.733817+00:00 [running]> on host 26fcbe5ecfed
+[2024-02-10T22:28:46.633+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Lucas Andrini' AIRFLOW_CTX_DAG_ID='etl_weather_data' AIRFLOW_CTX_TASK_ID='cleanup_temp_files' AIRFLOW_CTX_EXECUTION_DATE='2024-02-10T22:28:22.733817+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-02-10T22:28:22.733817+00:00'
+[2024-02-10T22:28:46.635+0000] {etl_dag.py:258} INFO - Archivo '/tmp/extracted_data.csv' existe antes de la eliminación.
+[2024-02-10T22:28:46.635+0000] {etl_dag.py:258} INFO - Archivo '/tmp/transformed_data.csv' existe antes de la eliminación.
+[2024-02-10T22:28:46.636+0000] {etl_dag.py:270} INFO - Archivo '/tmp/extracted_data.csv' eliminado con éxito.
+[2024-02-10T22:28:46.637+0000] {etl_dag.py:270} INFO - Archivo '/tmp/transformed_data.csv' eliminado con éxito.
+[2024-02-10T22:28:46.637+0000] {python.py:201} INFO - Done. Returned value was: None
+[2024-02-10T22:28:46.648+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=etl_weather_data, task_id=cleanup_temp_files, execution_date=20240210T222822, start_date=20240210T222846, end_date=20240210T222846
+[2024-02-10T22:28:46.682+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-02-10T22:28:46.701+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

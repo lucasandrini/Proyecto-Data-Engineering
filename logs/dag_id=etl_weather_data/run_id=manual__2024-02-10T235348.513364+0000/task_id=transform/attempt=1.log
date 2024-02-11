@@ -1,0 +1,26 @@
+[2024-02-10T23:54:32.711+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_weather_data.transform manual__2024-02-10T23:53:48.513364+00:00 [queued]>
+[2024-02-10T23:54:32.764+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_weather_data.transform manual__2024-02-10T23:53:48.513364+00:00 [queued]>
+[2024-02-10T23:54:32.776+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2024-02-10T23:54:32.853+0000] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): transform> on 2024-02-10 23:53:48.513364+00:00
+[2024-02-10T23:54:32.891+0000] {standard_task_runner.py:60} INFO - Started process 96 to run task
+[2024-02-10T23:54:32.894+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'etl_weather_data', 'transform', 'manual__2024-02-10T23:53:48.513364+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmphf6ou7ki']
+[2024-02-10T23:54:32.921+0000] {standard_task_runner.py:88} INFO - Job 4: Subtask transform
+[2024-02-10T23:54:33.200+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_weather_data.transform manual__2024-02-10T23:53:48.513364+00:00 [running]> on host 2012a0ecf4b3
+[2024-02-10T23:54:34.717+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Lucas Andrini' AIRFLOW_CTX_DAG_ID='etl_weather_data' AIRFLOW_CTX_TASK_ID='transform' AIRFLOW_CTX_EXECUTION_DATE='2024-02-10T23:53:48.513364+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-02-10T23:53:48.513364+00:00'
+[2024-02-10T23:54:34.899+0000] {etl_dag.py:147} INFO - Contenido de df_transformed:
+        lon      lat    main    description   temp  feels_like  temp_min  temp_max  pressure  humidity  visibility  speed                        dt country             name
+0  -58.3811 -34.6142   Clear      clear sky  28.94       32.24     26.94     29.85      1009        68       10000   2.06 2024-02-10 23:48:00+00:00      AR      San Nicolas
+1  -74.0061  40.7128   Clear      clear sky  12.70       11.85      9.49     14.31      1009        70       10000   3.09 2024-02-10 23:50:00+00:00      US         New York
+2   -0.1257  51.5085  Clouds     few clouds   7.80        6.58      6.46      8.77       984        93       10000   2.06 2024-02-10 23:43:17+00:00      GB           London
+3  139.7600  35.6800  Clouds     few clouds   7.96        4.10      4.41      8.84      1016        45       10000   7.72 2024-02-10 23:54:19+00:00      JP            Japan
+4  151.2100 -33.8678  Clouds  broken clouds  23.45       23.44     22.44     24.87      1024        61       10000   4.12 2024-02-10 23:50:01+00:00      AU           Sydney
+5    2.3515  48.8566  Clouds  broken clouds   7.31        4.64      6.05      8.06       988        94       10000   4.12 2024-02-10 23:50:49+00:00      FR            Paris
+6   55.3199  25.2651   Clear      clear sky  19.24       19.13     16.16     19.96      1017        73       10000   2.57 2024-02-10 23:49:31+00:00      AE            Dubai
+7   18.4200 -33.9200   Clear      clear sky  18.62       18.39     17.42     19.47      1019        71       10000   4.92 2024-02-10 23:54:25+00:00      ZA     De Waterkant
+8   72.8700  19.0700   Smoke          smoke  23.03       22.38     23.03     23.03      1014        38        2500   2.57 2024-02-10 23:54:26+00:00      IN  Konkan Division
+9  -43.2094 -22.9110  Clouds     few clouds  27.97       30.87     26.96     29.11      1015        72       10000   9.77 2024-02-10 23:54:08+00:00      BR   Rio de Janeiro
+[2024-02-10T23:54:34.923+0000] {etl_dag.py:151} INFO - Transformación de datos ok.
+[2024-02-10T23:54:34.926+0000] {python.py:201} INFO - Done. Returned value was: None
+[2024-02-10T23:54:34.987+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=etl_weather_data, task_id=transform, execution_date=20240210T235348, start_date=20240210T235432, end_date=20240210T235434
+[2024-02-10T23:54:35.093+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-02-10T23:54:35.283+0000] {taskinstance.py:3281} INFO - 2 downstream tasks scheduled from follow-on schedule check

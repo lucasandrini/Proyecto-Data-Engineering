@@ -1,4 +1,4 @@
-FROM apache/airflow:2.6.1
+FROM apache/airflow:2.8.0
 ADD requirements.txt .
 RUN pip install -r requirements.txt
-COPY config.ini /opt/airflow/dags/config.ini
+COPY config.ini .

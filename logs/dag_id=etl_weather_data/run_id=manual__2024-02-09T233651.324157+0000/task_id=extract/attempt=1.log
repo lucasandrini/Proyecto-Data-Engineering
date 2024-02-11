@@ -1,0 +1,24 @@
+[2024-02-09T23:36:59.114+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_weather_data.extract manual__2024-02-09T23:36:51.324157+00:00 [queued]>
+[2024-02-09T23:36:59.141+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_weather_data.extract manual__2024-02-09T23:36:51.324157+00:00 [queued]>
+[2024-02-09T23:36:59.142+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2024-02-09T23:37:00.410+0000] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): extract> on 2024-02-09 23:36:51.324157+00:00
+[2024-02-09T23:37:00.421+0000] {standard_task_runner.py:60} INFO - Started process 388 to run task
+[2024-02-09T23:37:00.425+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'etl_weather_data', 'extract', 'manual__2024-02-09T23:36:51.324157+00:00', '--job-id', '3', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmpes640cmj']
+[2024-02-09T23:37:00.431+0000] {standard_task_runner.py:88} INFO - Job 3: Subtask extract
+[2024-02-09T23:37:00.487+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_weather_data.extract manual__2024-02-09T23:36:51.324157+00:00 [running]> on host dace172a4978
+[2024-02-09T23:37:00.566+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Lucas Andrini' AIRFLOW_CTX_DAG_ID='etl_weather_data' AIRFLOW_CTX_TASK_ID='extract' AIRFLOW_CTX_EXECUTION_DATE='2024-02-09T23:36:51.324157+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-02-09T23:36:51.324157+00:00'
+[2024-02-09T23:37:00.568+0000] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/etl_dag.py", line 57, in extract
+    cities = [city.strip() for city in cities.split(',')]
+AttributeError: 'NoneType' object has no attribute 'split'
+[2024-02-09T23:37:00.581+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=etl_weather_data, task_id=extract, execution_date=20240209T233651, start_date=20240209T233659, end_date=20240209T233700
+[2024-02-09T23:37:00.594+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 3 for task extract ('NoneType' object has no attribute 'split'; 388)
+[2024-02-09T23:37:00.637+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-02-09T23:37:00.664+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

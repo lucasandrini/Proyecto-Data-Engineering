@@ -1,0 +1,35 @@
+[2024-02-10T14:34:36.614+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_weather_data.transform manual__2024-02-10T14:34:26.090298+00:00 [queued]>
+[2024-02-10T14:34:36.646+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_weather_data.transform manual__2024-02-10T14:34:26.090298+00:00 [queued]>
+[2024-02-10T14:34:36.648+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2024-02-10T14:34:36.686+0000] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): transform> on 2024-02-10 14:34:26.090298+00:00
+[2024-02-10T14:34:36.696+0000] {standard_task_runner.py:60} INFO - Started process 80 to run task
+[2024-02-10T14:34:36.704+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'etl_weather_data', 'transform', 'manual__2024-02-10T14:34:26.090298+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmp1mag3hnk']
+[2024-02-10T14:34:36.713+0000] {standard_task_runner.py:88} INFO - Job 9: Subtask transform
+[2024-02-10T14:34:36.876+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_weather_data.transform manual__2024-02-10T14:34:26.090298+00:00 [running]> on host 86e1906e931d
+[2024-02-10T14:34:37.398+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Lucas Andrini' AIRFLOW_CTX_DAG_ID='etl_weather_data' AIRFLOW_CTX_TASK_ID='transform' AIRFLOW_CTX_EXECUTION_DATE='2024-02-10T14:34:26.090298+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-02-10T14:34:26.090298+00:00'
+[2024-02-10T14:34:37.406+0000] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/etl_dag.py", line 97, in transform
+    df_extracted = pd.read_csv(extract_csv_path, converters={'coord': eval, 'weather': ast.literal_eval, 'main': eval, 'wind': eval, 'sys': eval})
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 912, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 577, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1407, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parsers/readers.py", line 1679, in _make_engine
+    return mapping[engine](f, **self.options)
+  File "/home/airflow/.local/lib/python3.8/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 557, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+[2024-02-10T14:34:37.441+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=etl_weather_data, task_id=transform, execution_date=20240210T143426, start_date=20240210T143436, end_date=20240210T143437
+[2024-02-10T14:34:37.476+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 9 for task transform (No columns to parse from file; 80)
+[2024-02-10T14:34:37.522+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-02-10T14:34:37.596+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

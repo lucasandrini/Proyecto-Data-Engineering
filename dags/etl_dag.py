@@ -13,9 +13,13 @@ import os
 import ast
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from dotenv import load_dotenv
+
+# Cargar variables de entorno desde el archivo .env
+load_dotenv()
 
 # Ruta absoluta del archivo de configuración
-ruta_del_archivo_config = '/opt/airflow/dags/config.ini'
+ruta_del_archivo_config = '/opt/airflow/config.ini'
 
 # Lectura de archivo de configuración
 config = configparser.ConfigParser()
@@ -48,7 +52,7 @@ dag = DAG(
 def extract(**kwargs):
 
     # Datos API
-    api_key = config.get('openweathermap', 'api_key')
+    api_key = os.getenv('OPENWEATHERMAP_API_KEY')
     cities = config.get('openweathermap', 'cities')  # Latitudes y longitudes de ciudades separadas por comas
     cities = [city.strip() for city in cities.split(',')]
 
@@ -81,7 +85,7 @@ def extract(**kwargs):
     df.to_csv(extract_csv_path, index=False)
 
     # Log contenido del DataFrame después de la extracción
-    logging.info(f"Contenido del DataFrame después de la extracción:\n{df}")
+    logging.info(f"Contenido del DataFrame después de la extracción:\n{df.to_string()}")
 
 def transform(**kwargs):
     # Cargar datos desde el archivo CSV temporal de extract
@@ -123,8 +127,10 @@ def transform(**kwargs):
         # Extraer datos de la columna 'dt'
         fila_transformed['dt'] = fila['dt']
 
-        # Extraer datos de la columna 'sys'
-        fila_transformed['country'] = fila['sys']['country']
+        if 'sys' in fila and 'country' in fila['sys']:
+            fila_transformed['country'] = fila['sys']['country']
+        else:
+            fila_transformed['country'] = None
 
         # Extraer datos de la columna 'name'
         fila_transformed['name'] = fila['name']
@@ -152,11 +158,11 @@ def load(**kwargs):
     logging.info(f"Contenido de df_transformed:\n{df_transformed.to_string()}")
 
     # Configuracion de conexion a AWS Redshift
-    user = config.get('redshift', 'user')
-    password = config.get('redshift', 'password')
-    host = config.get('redshift', 'host')
-    port = config.get('redshift', 'port')
-    database = config.get('redshift', 'database')
+    user = os.getenv('REDSHIFT_USER')
+    password = os.getenv('REDSHIFT_PASSWORD')
+    host = os.getenv('REDSHIFT_HOST')
+    port = os.getenv('REDSHIFT_PORT')
+    database = os.getenv('REDSHIFT_DATABASE')
     url = URL.create(
         drivername='redshift+redshift_connector',
         host=host,
@@ -216,9 +222,9 @@ def send_mail(**kwargs):
             message.attach(MIMEText(body_text, 'html'))
 
             # Obtengo datos de mail desde el archivo de configuración
-            remitente = config.get('mail_data', 'remitente')
-            password = config.get('mail_data', 'password')
-            destinatario = config.get('mail_data', 'destinatario')
+            remitente = os.getenv('MAIL_REMITENTE')
+            password = os.getenv('MAIL_PASSWORD')
+            destinatario = os.getenv('MAIL_DESTINATARIO')
             smtp_config = config['smtp_config']
             smtp_server = smtp_config.get('smtp_server')
             smtp_port = smtp_config.getint('smtp_port')

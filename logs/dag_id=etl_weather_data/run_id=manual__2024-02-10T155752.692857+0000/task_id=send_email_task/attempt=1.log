@@ -1,0 +1,28 @@
+[2024-02-10T15:58:03.850+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_weather_data.send_email_task manual__2024-02-10T15:57:52.692857+00:00 [queued]>
+[2024-02-10T15:58:03.871+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_weather_data.send_email_task manual__2024-02-10T15:57:52.692857+00:00 [queued]>
+[2024-02-10T15:58:03.872+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2024-02-10T15:58:03.902+0000] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): send_email_task> on 2024-02-10 15:57:52.692857+00:00
+[2024-02-10T15:58:03.911+0000] {standard_task_runner.py:60} INFO - Started process 80 to run task
+[2024-02-10T15:58:03.917+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'etl_weather_data', 'send_email_task', 'manual__2024-02-10T15:57:52.692857+00:00', '--job-id', '34', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmpjlnogpfz']
+[2024-02-10T15:58:03.924+0000] {standard_task_runner.py:88} INFO - Job 34: Subtask send_email_task
+[2024-02-10T15:58:04.016+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_weather_data.send_email_task manual__2024-02-10T15:57:52.692857+00:00 [running]> on host 9426a31598f6
+[2024-02-10T15:58:04.581+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Lucas Andrini' AIRFLOW_CTX_DAG_ID='etl_weather_data' AIRFLOW_CTX_TASK_ID='send_email_task' AIRFLOW_CTX_EXECUTION_DATE='2024-02-10T15:57:52.692857+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-02-10T15:57:52.692857+00:00'
+[2024-02-10T15:58:04.595+0000] {etl_dag.py:187} INFO - Tipo de datos temp: float64
+[2024-02-10T15:58:04.596+0000] {etl_dag.py:191} INFO - min temp: 5.0
+[2024-02-10T15:58:04.597+0000] {etl_dag.py:194} INFO - max temp: 30.0
+[2024-02-10T15:58:04.608+0000] {warnings.py:109} WARNING - /opt/***/dags/etl_dag.py:202: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  rows_to_notify.loc[df_transformed['temp'] < min_temperature, 'limite'] = min_temperature
+
+[2024-02-10T15:58:04.614+0000] {etl_dag.py:208} INFO - Filas a notificar:
+[2024-02-10T15:58:04.615+0000] {etl_dag.py:209} INFO -   country                                          name  temp  limite
+1      GS  South Georgia and the South Sandwich Islands  2.57     5.0
+[2024-02-10T15:58:05.776+0000] {etl_dag.py:248} ERROR - 'NoneType' object has no attribute 'encode'
+[2024-02-10T15:58:05.777+0000] {etl_dag.py:249} ERROR - Error al enviar el correo electrónico.
+[2024-02-10T15:58:05.778+0000] {python.py:201} INFO - Done. Returned value was: None
+[2024-02-10T15:58:05.790+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=etl_weather_data, task_id=send_email_task, execution_date=20240210T155752, start_date=20240210T155803, end_date=20240210T155805
+[2024-02-10T15:58:05.846+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-02-10T15:58:06.009+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

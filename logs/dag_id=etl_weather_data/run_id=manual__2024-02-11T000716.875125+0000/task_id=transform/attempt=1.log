@@ -1,0 +1,27 @@
+[2024-02-11T00:07:59.326+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_weather_data.transform manual__2024-02-11T00:07:16.875125+00:00 [queued]>
+[2024-02-11T00:07:59.346+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_weather_data.transform manual__2024-02-11T00:07:16.875125+00:00 [queued]>
+[2024-02-11T00:07:59.347+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2024-02-11T00:07:59.377+0000] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): transform> on 2024-02-11 00:07:16.875125+00:00
+[2024-02-11T00:07:59.387+0000] {standard_task_runner.py:60} INFO - Started process 95 to run task
+[2024-02-11T00:07:59.396+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'etl_weather_data', 'transform', 'manual__2024-02-11T00:07:16.875125+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmpgy9zvoma']
+[2024-02-11T00:07:59.404+0000] {standard_task_runner.py:88} INFO - Job 4: Subtask transform
+[2024-02-11T00:07:59.529+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_weather_data.transform manual__2024-02-11T00:07:16.875125+00:00 [running]> on host 09659ec0e379
+[2024-02-11T00:08:00.462+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Lucas Andrini' AIRFLOW_CTX_DAG_ID='etl_weather_data' AIRFLOW_CTX_TASK_ID='transform' AIRFLOW_CTX_EXECUTION_DATE='2024-02-11T00:07:16.875125+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-02-11T00:07:16.875125+00:00'
+[2024-02-11T00:08:00.545+0000] {etl_dag.py:147} INFO - Contenido de df_transformed:
+         lon      lat     main              description   temp  feels_like  temp_min  temp_max  pressure  humidity  visibility  speed                        dt country                                          name
+0   -58.3800 -34.6100   Clouds         scattered clouds  28.30       31.71     26.58     29.26      1010        73       10000   1.83 2024-02-11 00:07:42+00:00      AR                                  Buenos Aires
+1   -74.0060  40.7128  Drizzle  light intensity drizzle  12.62       11.77      9.99     14.08      1009        70       10000   6.17 2024-02-11 00:01:50+00:00      US                                      New York
+2    -0.1257  51.5085   Clouds               few clouds   7.79        6.56      6.46      8.77       984        93       10000   2.06 2024-02-10 23:54:18+00:00      GB                                        London
+3   139.7600  35.6800   Clouds               few clouds   8.06        4.23      6.66      8.83      1016        45       10000   7.72 2024-02-11 00:07:48+00:00      JP                                         Japan
+4   151.2100 -33.8700   Clouds            broken clouds  23.70       23.72     22.43     25.71      1024        61       10000   4.12 2024-02-11 00:07:49+00:00      AU                                        Sydney
+5     2.3500  48.8600   Clouds            broken clouds   7.36        4.70      6.05      8.06       988        93       10000   4.12 2024-02-11 00:07:51+00:00      FR                                         Paris
+6    55.3200  25.2700    Clear                clear sky  18.97       18.70     15.18     19.97      1017        68       10000   3.60 2024-02-11 00:07:53+00:00      AE                                         Dubai
+7    18.4197 -33.9220    Clear                clear sky  18.61       18.38     17.42     19.47      1019        71       10000   5.81 2024-02-10 23:58:04+00:00      ZA                                     Cape Town
+8    72.8700  19.0700    Smoke                    smoke  23.03       22.43     23.03     23.03      1014        40        2500   2.06 2024-02-11 00:07:55+00:00      IN                               Konkan Division
+9   -43.2094 -22.9110   Clouds               few clouds  27.97       30.87     26.96     29.11      1015        72       10000   9.77 2024-02-10 23:59:23+00:00      BR                                Rio de Janeiro
+10  -34.9000 -56.1800   Clouds          overcast clouds   2.49       -4.51      2.49      2.49       991        78       10000  16.83 2024-02-11 00:07:57+00:00      GS  South Georgia and the South Sandwich Islands
+[2024-02-11T00:08:00.552+0000] {etl_dag.py:151} INFO - Transformación de datos ok.
+[2024-02-11T00:08:00.553+0000] {python.py:201} INFO - Done. Returned value was: None
+[2024-02-11T00:08:00.574+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=etl_weather_data, task_id=transform, execution_date=20240211T000716, start_date=20240211T000759, end_date=20240211T000800
+[2024-02-11T00:08:00.654+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2024-02-11T00:08:00.728+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

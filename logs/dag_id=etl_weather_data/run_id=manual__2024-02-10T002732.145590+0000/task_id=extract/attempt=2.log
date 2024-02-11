@@ -1,0 +1,31 @@
+[2024-02-10T00:28:37.040+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_weather_data.extract manual__2024-02-10T00:27:32.145590+00:00 [queued]>
+[2024-02-10T00:28:37.049+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_weather_data.extract manual__2024-02-10T00:27:32.145590+00:00 [queued]>
+[2024-02-10T00:28:37.050+0000] {taskinstance.py:2171} INFO - Starting attempt 2 of 2
+[2024-02-10T00:28:37.064+0000] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): extract> on 2024-02-10 00:27:32.145590+00:00
+[2024-02-10T00:28:37.069+0000] {standard_task_runner.py:60} INFO - Started process 112 to run task
+[2024-02-10T00:28:37.073+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'etl_weather_data', 'extract', 'manual__2024-02-10T00:27:32.145590+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmpx1opj_uf']
+[2024-02-10T00:28:37.076+0000] {standard_task_runner.py:88} INFO - Job 8: Subtask extract
+[2024-02-10T00:28:37.129+0000] {task_command.py:423} INFO - Running <TaskInstance: etl_weather_data.extract manual__2024-02-10T00:27:32.145590+00:00 [running]> on host f4575c9010ae
+[2024-02-10T00:28:37.514+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Lucas Andrini' AIRFLOW_CTX_DAG_ID='etl_weather_data' AIRFLOW_CTX_TASK_ID='extract' AIRFLOW_CTX_EXECUTION_DATE='2024-02-10T00:27:32.145590+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-02-10T00:27:32.145590+00:00'
+[2024-02-10T00:28:37.518+0000] {etl_dag.py:55} INFO - Contenido de config.ini:
+ItemsView(<configparser.ConfigParser object at 0x7f81ea18a2e0>)
+[2024-02-10T00:28:37.519+0000] {etl_dag.py:59} INFO - API KEY: None
+[2024-02-10T00:28:37.519+0000] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/etl_dag.py", line 60, in extract
+    cities = config.get('openweathermap', 'cities')  # Latitudes y longitudes de ciudades separadas por comas
+  File "/usr/local/lib/python3.8/configparser.py", line 781, in get
+    d = self._unify_values(section, vars)
+  File "/usr/local/lib/python3.8/configparser.py", line 1149, in _unify_values
+    raise NoSectionError(section) from None
+configparser.NoSectionError: No section: 'openweathermap'
+[2024-02-10T00:28:37.536+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=etl_weather_data, task_id=extract, execution_date=20240210T002732, start_date=20240210T002837, end_date=20240210T002837
+[2024-02-10T00:28:37.555+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 8 for task extract (No section: 'openweathermap'; 112)
+[2024-02-10T00:28:37.609+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-02-10T00:28:37.645+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check
