@@ -102,3 +102,34 @@ CREATE TABLE weather_cities (
 ```
 * Para el envío del mail de alerta, en caso de usar gmail, se debe configurar una contraseña de aplicación. Para más información consultar el siguiente hilo: [Stack Overflow](https://stackoverflow.com/questions/59188483/error-invalid-login-535-5-7-8-username-and-password-not-accepted)
 * El archivo `cities_list.xlsx` contiene ciudades con la información de longitud y latitud, las cuales se pueden agregar en `config.ini` para obtener la informacion del clima.
+
+## Funcionamiento
+### Inicio Airflow
+![](https://drive.google.com/file/d/1oPcrRvBZyk_CL6tqyUssb22Pb8IFcVqw/view?usp=drive_link)
+
+### Airflow Graph
+![](https://drive.google.com/file/d/1VERT0jgswyzeZ4Y9Li5UzEmI2AlEtqzj/view?usp=drive_link)
+
+### Ejecucion
+![](https://drive.google.com/file/d/11GEyNrk4ElRlOwRyxFYPJnjqwx-Sz6oG/view?usp=drive_link)
+
+### Log Extract
+![](https://drive.google.com/file/d/1Y7V96ZLc2Wjm4NgF5tOhZ_LKr8_CXSyI/view?usp=drive_link)
+
+### Log Transform
+![](https://drive.google.com/file/d/1zPL99kic0tKOI-k31eIdK-cF9r8-Z4Ya/view?usp=drive_link)
+
+### Log Load
+![](https://drive.google.com/file/d/18dFT46W1Mii2VXFdWObhWYmn2EPYIOG_/view?usp=drive_link)
+
+### Log Send Mail
+![](https://drive.google.com/file/d/1Im-aPhYoMZLy21o7qyMuKStN7P93nAk8/view?usp=drive_link)
+
+### Log Clean
+![](https://drive.google.com/file/d/1QA1o79DqCdEfAe_P4B_mhOP3R1fPixIj/view?usp=drive_link)
+
+### Base de datos Redshift (DBeaver)
+![](https://drive.google.com/file/d/1g0Vwl7UK4aHhIgwZOKix3P3FDK7-bwg3/view?usp=drive_link)
+
+### Alerta por mail
+![](https://drive.google.com/file/d/13H12XH7HjVfuP4XWLCx4g_2MqqnLbVXh/view?usp=drive_link)
