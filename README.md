@@ -6,7 +6,7 @@ Este DAG de Airflow está diseñado para realizar un proceso ETL de datos meteor
 ## Configuración
 Editar el archivo de configuración `config.ini` ubicado en `/opt/airflow/` y `.env` con los parámetros necesarios. A continuación se detallan las secciones y claves requeridas:
 
-### Configuración config.ini
+### Archivo config.ini
 ```
 [openweathermap]
 cities = latitud1;longitud1, latitud2;longitud2, ...
@@ -20,7 +20,7 @@ smtp_server = valor
 smtp_port = valor
 ```
 
-### Configuración .env
+### Archivo .env
 ```
 AIRFLOW_UID=50000
 
@@ -103,7 +103,7 @@ CREATE TABLE weather_cities (
 * Para el envío del mail de alerta, en caso de usar gmail, se debe configurar una contraseña de aplicación. Para más información consultar el siguiente hilo: [Stack Overflow](https://stackoverflow.com/questions/59188483/error-invalid-login-535-5-7-8-username-and-password-not-accepted)
 * El archivo `cities_list.xlsx` contiene ciudades con la información de longitud y latitud, las cuales se pueden agregar en `config.ini` para obtener la informacion del clima.
 
-## Funcionamiento
+## Funcionamiento del ETL en imagenes
 ### Inicio Airflow
 ![](https://github.com/lucasandrini/Proyecto-Data-Engineering/blob/main/Imagenes/dag%20airflow%20inicio.png)
 
