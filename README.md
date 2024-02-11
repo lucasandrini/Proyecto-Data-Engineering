@@ -105,31 +105,31 @@ CREATE TABLE weather_cities (
 
 ## Funcionamiento
 ### Inicio Airflow
-![](Imagenes/dag airflow inicio.png)
+![](https://github.com/lucasandrini/Proyecto-Data-Engineering/blob/main/Imagenes/dag%20airflow%20inicio.png)
 
 ### Airflow Graph
-![](Imagenes/airflow graph.png)
+![](https://github.com/lucasandrini/Proyecto-Data-Engineering/blob/main/Imagenes/airflow%20graph.png)
 
 ### Ejecucion
-![](Imagenes/dag tarea ejecutada.png)
+![](https://github.com/lucasandrini/Proyecto-Data-Engineering/blob/main/Imagenes/dag%20tarea%20ejecutada.png)
 
 ### Log Extract
-![](Imagenes/log extract.png)
+![](https://github.com/lucasandrini/Proyecto-Data-Engineering/blob/main/Imagenes/log%20extract.png)
 
 ### Log Transform
-![](Imagenes/log transform.png)
+![](https://github.com/lucasandrini/Proyecto-Data-Engineering/blob/main/Imagenes/log%20transform.png)
 
 ### Log Load
-![](Imagenes/log load.png)
+![](https://github.com/lucasandrini/Proyecto-Data-Engineering/blob/main/Imagenes/log%20load.png)
 
 ### Log Send Mail
-![](Imagenes/log mail.png)
+![](https://github.com/lucasandrini/Proyecto-Data-Engineering/blob/main/Imagenes/log%20mail.png)
 
 ### Log Clean
-![](Imagenes/log clean.png)
+![](https://github.com/lucasandrini/Proyecto-Data-Engineering/blob/main/Imagenes/log%20clean.png)
 
 ### Base de datos Redshift (DBeaver)
-![](Imagenes/imagen db.png)
+![](https://github.com/lucasandrini/Proyecto-Data-Engineering/blob/main/Imagenes/imagen%20db.png)
 
 ### Alerta por mail
-![](Imagenes/imagen mail alerta.png)
+![](https://github.com/lucasandrini/Proyecto-Data-Engineering/blob/main/Imagenes/imagen%20mail%20alerta.png)
